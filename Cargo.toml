@@ -1,22 +1,24 @@
 [package]
 name = "fcm-rs"
 version = "0.2.0"
-authors = ["Jalal Alizade"] 
-repository = "https://github.com/calalalizade/fcm-rs"
-description = "A Rust crate for easy interaction with Firebase Cloud Messaging API (V1)."
-keywords = ["firebase", "fcm", "push-notifications", "rust"]
-categories = ["web-programming", "api-bindings"]
-license = "MIT"
+authors = ["Jalal Alizade"]
 edition = "2021"
-
-[dependencies]
-reqwest = { version = "0.12", features = ["json"] }
-serde = { version = "1", features = ["derive"] }
-serde_json = "1"
-tokio = { version = "1.0", features = ["macros", "rt-multi-thread"] }
-yup-oauth2 = "9.0.0"
-thiserror = "1.0"
-
+description = "A Rust crate for easy interaction with Firebase Cloud Messaging API (V1)."
+repository = "https://github.com/calalalizade/fcm-rs"
+license = "MIT"
+keywords = ["fcm", "firebase", "push-notifications", "rust"]
+categories = ["api-bindings", "web-programming"]
 
 [package.metadata.docs.rs]
 all-features = true
+
+[dependencies]
+reqwest = { version = "0.12", default-features = false, features = [
+  "json",
+  "rustls-tls",
+] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = "1.0"
+tokio = { version = "1.0", features = ["macros", "rt-multi-thread"] }
+yup-oauth2 = "9.0.0"
